@@ -1,0 +1,41 @@
+.main-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.photo-preview-container {
+  width: 20%;
+  margin: 10px;
+}
+
+.photo-preview {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+}
+
+@media screen and (max-width: 777px) {
+  .main-form {
+    width: 98%;
+  }
+}
+
+.notification-button-section {
+  margin-top: 10px;
+}
+
+.send-notification-button {
+  margin-top: 10px;
+}
+
+.signaturepad{
+  border: 1px solid #000000;
+  background-color: #CCCCCC;
+}
+
+.margin-top-5{
+  margin-top:5px;
+}
+
+.float-right{
+  float:right;
+}

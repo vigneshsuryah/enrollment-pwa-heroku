@@ -1,0 +1,23 @@
+<div class="ui card enroll-list">
+  <div class="content">
+    <div class="header">My Enrollments</div>
+  </div>
+  <div class="content">
+
+    <div *ngFor="let enroll of enrolls" class="enroll-row">
+      <div>
+        <strong>Enrolled For: </strong>{{ enroll.person.firstName }} {{ enroll.person.lastName }}
+      </div>
+      <div>
+        <strong>State and Plan Selected: </strong>{{ enroll.state }} - {{ enroll.plans }}
+      </div>
+      <div>
+        <strong>Number of photos: </strong>{{ enroll.numberOfPhotos }}
+      </div>
+    </div>
+
+    <div *ngIf="!enrolls || enrolls.length === 0">
+      You did not do any enrollments.
+    </div>
+  </div>
+</div>

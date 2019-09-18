@@ -1,0 +1,171 @@
+
+<div class="ui card main-form">
+    
+  <div class="content">
+    
+    <div class="ui large form equal width stackable grid">
+
+      <div class="three column row">
+        <div class="column field">
+          <label for="firstName">First name</label>
+          <input type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="First Name"
+                  [(ngModel)]="enroll.person.firstName"
+                  (change)="cacheForm()"
+          />
+        </div>
+
+        <div class="column field">
+          <label for="lastName">Last name</label>
+          <input type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Last Name"
+                  [(ngModel)]="enroll.person.lastName"
+                  (change)="cacheForm()"
+          />
+        </div>
+
+        <div class="column field">
+          <label for="middleName">Middle name</label>
+          <input type="text"
+                  id="middleName"
+                  name="middleName"
+                  placeholder="Middle Name"
+                  [(ngModel)]="enroll.person.middleName"
+                  (change)="cacheForm()"
+          />
+        </div>
+      </div>
+
+      <div class="three column row">
+
+        <div class="column field">
+          <label for="state">State</label>
+          <sui-select class="selection"
+                      [(ngModel)]="enroll.state"
+                      (ngModelChange)="cacheForm()"
+                      [options]="states"
+                      labelField="name"
+                      valueField="name"
+                      placeholder="State"
+                      [isSearchable]="true"
+                      #stateModelSelect>
+            <sui-select-option *ngFor="let option of stateModelSelect.filteredOptions" [value]="option"></sui-select-option>
+          </sui-select>
+        </div>
+
+        <div class="column field">
+          <label for="planSelection">Plan Selection</label>
+          <sui-select class="selection"
+                      [(ngModel)]="enroll.plans"
+                      (ngModelChange)="cacheForm()"
+                      [options]="plans"
+                      labelField="name"
+                      valueField="name"
+                      placeholder="Plans"
+                      [isSearchable]="true"
+                      #planModelSelect>
+            <sui-select-option *ngFor="let option of planModelSelect.filteredOptions" [value]="option"></sui-select-option>
+          </sui-select>
+        </div>
+
+        <div class="column field">
+          <label for="emailId">Email Id</label>
+          <input type="text"
+                  id="emailId"
+                  name="emailId"
+                  placeholder="Email Id"
+                  [(ngModel)]="enroll.person.emailId"
+                  (change)="cacheForm()"
+          />
+        </div>
+
+      </div>
+      
+      <div class="three column row">
+        <div class="column field">
+          <label for="birthdate">Birthdate</label>
+          <input type="date"
+                  id="birthdate"
+                  name="birthdate"
+                  placeholder="Birthdate"
+                  [(ngModel)]="enroll.person.birthdate"
+                  (change)="cacheForm()"
+          />
+        </div>
+
+        <div class="column field">
+          <label for="address">Address</label>
+          <input type="text"
+                 id="address"
+                 name="address"
+                 placeholder="Address"
+                 [(ngModel)]="enroll.person.address"
+                 (change)="cacheForm()"
+          />
+        </div>
+
+        <div class="column field">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text"
+                 id="phoneNumber"
+                 name="phoneNumber"
+                 placeholder="Phone Number"
+                 [(ngModel)]="enroll.person.phoneNumber"
+                 (change)="cacheForm()"
+          />
+        </div>       
+      </div>
+
+      <div class="three column row">
+          <div class="column field">
+              <label>Upload the document images here</label>
+              <input type="file" multiple accept="image/*" (change)="cachePhoto($event)"/>
+            </div>
+
+        <div class="column field">
+          <label>Signature Pad</label>
+          <div class="signaturepad">
+            <signature-pad (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+          </div>
+        </div>
+
+        <div class="column field">
+            <label>Signature Controls</label>
+            <button class="ui button margin-top-5" (click)="signatureLoad()">Save Signature</button>
+            <button class="ui button margin-top-5" (click)="signatureClear()">Clear Signature</button>
+        </div>       
+      </div>
+
+      <div class="ui divider"></div>
+
+      <div class="row preview">
+        <div *ngFor="let photo of enroll.photos" class="photo-preview-container">
+          <img src="{{ photo.content }}" alt="{{ photo.filename }}" class="photo-preview"/>
+        </div>
+      <div *ngIf="enroll.signature !== undefined" class="photo-preview-container">
+          <img src="{{ enroll.signature }}" alt="signature" class="photo-preview"/>
+        </div>
+      </div>
+
+      <div class="three column row">
+        <div class="column field">
+          <button class="ui button" (click)="clearCache()">Clear cache</button>
+        </div>
+
+        <div class="column field">
+            <button class="ui button" (click)="subscribeToNotifications()">Enable notifications...</button>
+            <button class="ui button send-notification-button" (click)="sendNotificationToAll()">Send test notification</button>
+        </div>
+
+        <div class="column field">
+            <button class="ui positive right floated button" (click)="save()">Save Enrollment Details</button>
+        </div>       
+      </div>
+
+    </div>
+  </div>
+</div>
