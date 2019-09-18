@@ -110,6 +110,7 @@ export class EnrollCreateComponent implements OnInit {
   clearCache() {
     this.enrollCacheService.clear();
     this.enroll = new Enroll();
+    this.signatureClear();
   }
 
   subscribeToNotifications() {
