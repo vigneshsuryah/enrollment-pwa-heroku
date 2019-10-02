@@ -16,4 +16,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.actualVersion = environment.version;
   }
+
+  enableNotification(){
+    document.getElementById("enableNotifications").click();
+  }
 }

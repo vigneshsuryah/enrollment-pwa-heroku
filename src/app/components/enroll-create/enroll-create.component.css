@@ -39,3 +39,7 @@
 .float-right{
   float:right;
 }
+
+.hide-button{
+  display:none;
+}

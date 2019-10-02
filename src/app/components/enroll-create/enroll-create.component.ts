@@ -21,6 +21,7 @@ export class EnrollCreateComponent implements OnInit {
   states: any[];
   plans: any[];
   enroll: Enroll = new Enroll();
+  enrollssimply: Enroll[];
 
   constructor(private enrollCacheService: EnrollCacheService,
               private enrollService: EnrollService,
@@ -46,21 +47,26 @@ export class EnrollCreateComponent implements OnInit {
       });
     });
 
+    this.enrollService.getAll().subscribe(res => {
+      this.enrollssimply = res;
+    })
+
     this.enrollCacheService.get().subscribe((cachedEnroll) => {
-      console.log('Retrieve data about enrolled from cache: ');
-      console.log(JSON.stringify(cachedEnroll));
+      //console.log('Retrieve data about enrolled from cache: ');
+      //console.log(JSON.stringify(cachedEnroll));
 
       if (cachedEnroll){
         this.enroll = cachedEnroll;
         this.signaturePad.fromDataURL(this.enroll.signature);
       }
     });
+    
   }
 
   ngAfterViewInit() {
     // this.signaturePad is now available
     this.signaturePad.set('minWidth', 1);
-    this.signaturePad.set('canvasWidth', 500);
+    //this.signaturePad.set('canvasWidth', 500);
     this.signaturePad.set('canvasHeight', 80);
     this.signaturePad.clear();
   }
@@ -123,6 +129,21 @@ export class EnrollCreateComponent implements OnInit {
 
   save() {
     this.cacheForm();
-    this.enrollService.save(this.enroll);
+    
+    this.enrollService.save(this.enroll).subscribe(
+      () => {
+        console.log('Details sent for validation. You will be notified once enrollment is completed !');
+        alert('Details sent for validation. You will be notified once enrollment is completed !');
+        setTimeout(function(){
+          document.getElementById("sendNotifications").click();
+        }, 2000);
+      },
+      err => {
+        console.log('Details Saved !');
+        alert('Details Saved !');
+        console.error('Failed, reason: ', err)
+      }
+    );
+
   }
 }

@@ -3,3 +3,7 @@
   height: 56px;
   width: 100%;
 }
+
+.border-right {
+  border-right: 1px solid #aaaaaa;
+}

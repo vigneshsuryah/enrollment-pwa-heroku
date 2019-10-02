@@ -157,8 +157,8 @@
         </div>
 
         <div class="column field">
-            <button class="ui button" (click)="subscribeToNotifications()">Enable notifications...</button>
-            <button class="ui button send-notification-button" (click)="sendNotificationToAll()">Send test notification</button>
+            <button class="ui button hide-button" id="enableNotifications" (click)="subscribeToNotifications()">Enable notifications</button>
+            <button class="ui button send-notification-button hide-button" id="sendNotifications" (click)="sendNotificationToAll()">Send test notification</button>
         </div>
 
         <div class="column field">

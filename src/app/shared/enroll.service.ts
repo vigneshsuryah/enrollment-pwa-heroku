@@ -10,19 +10,29 @@ export class EnrollService {
   constructor(private http: HttpClient) {
   }
 
-  save(enroll: Enroll): void {
+  save(enroll: Enroll): Observable<any> {
     console.log('Try save enrollment details in database: ');
     console.log(enroll);
 
+    return this.http.post(environment.main_api_url + "/api/enrollments", this.prepareEnroll(enroll));
+  }
+
+  /*save(enroll: Enroll): void {
+    console.log('Try save enrollment details in database: ');
+    console.log(enroll);
 
   this.http.post(environment.main_api_url + "/api/enrollments", this.prepareEnroll(enroll)).subscribe(
       () => {
         console.log('Enrollment details saved successfully!');
         alert('Enrollment details saved successfully!');
       },
-      err => console.error('Failed, reason: ', err)
+      err => {
+        console.log('Enrollment details saved successfully!');
+        alert('Enrollment details saved successfully!');
+        console.error('Failed, reason: ', err)
+      }
     );
-  }
+  }*/
 
   getAll(): Observable<Enroll[]> {
     return this.http.get<Enroll[]>(environment.main_api_url + "/api/enrollments");
