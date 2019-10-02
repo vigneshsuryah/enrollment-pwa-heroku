@@ -17,9 +17,11 @@ export class AppComponent implements OnInit {
       this.isConnected = isConnected;
       if (this.isConnected) {
         this.status = "ONLINE";
+        document.body.style.background = 'white'; 
       }
       else {
         this.status = "OFFLINE";
+        document.body.style.background = 'darkgray'; 
       }
     })
   }
