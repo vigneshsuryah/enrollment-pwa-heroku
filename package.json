@@ -31,7 +31,7 @@
     "@ngx-pwa/local-storage": "^6.0.0-rc.0",
     "angular2-signaturepad": "^2.9.0",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-server": "^0.10.0",
     "moment": "^2.18.1",
     "ng-http-loader": "^2.0.0",
