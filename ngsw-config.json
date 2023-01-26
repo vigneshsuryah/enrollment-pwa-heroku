@@ -28,9 +28,9 @@
     {
       "name": "info-api",
       "urls": [
-        "https://enrollment-service-cloud.herokuapp.com/api/states",
-        "https://enrollment-service-cloud.herokuapp.com/api/plans",
-        "https://enrollment-service-cloud.herokuapp.com/api/enrollments"
+        "https://enrollment-service-cloud.onrender.com/api/states",
+        "https://enrollment-service-cloud.onrender.com/api/plans",
+        "https://enrollment-service-cloud.onrender.com/api/enrollments"
       ],
       "cacheConfig": {
         "strategy": "freshness",
